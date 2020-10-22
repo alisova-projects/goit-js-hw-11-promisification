@@ -25,3 +25,13 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+a {
+  text-decoration: none;
+  color: rgb(23, 104, 104);
+}
+
+li {
+  list-style-type: square;
+  color: blueviolet;
+}

@@ -16,27 +16,35 @@ const users = [
   { name: 'Lux', active: false },
 ];
 
-const toggleUserState = (allUsers, userName, callback) => {
+const toggleUserState = (allUsers, userName) => {
   const updatedUsers = allUsers.map(user =>
-    user.name === userName ? { ...user, active: !user.active } : user,
-  );
-
-  callback(updatedUsers);
-};
+      user.name === userName ? { ...user, active: !user.active } : user);
+  
+  return new Promise((resolve, reject) => {
+    resolve(updatedUsers);
+  });
+}
 
 const logger = updatedUsers => console.table(updatedUsers);
 
 
 /*
-Сейчас работает так
+Сейчас работает так:
+// const toggleUserState = (allUsers, userName, callback) => {
+//   const updatedUsers = allUsers.map(user =>
+//     user.name === userName ? { ...user, active: !user.active } : user,
+//   );
+
+//   callback(updatedUsers);
+// };
+
+// toggleUserState(users, 'Mango', logger);
+// toggleUserState(users, 'Lux', logger);
 */
-
-toggleUserState(users, 'Mango', logger);
-toggleUserState(users, 'Lux', logger);
-
 
 /*
  * Должно работать так
  */
-// toggleUserState(users, 'Mango').then(logger);
-// toggleUserState(users, 'Lux').then(logger);
+
+toggleUserState(users, 'Mango').then(logger);
+toggleUserState(users, 'Lux').then(logger);
