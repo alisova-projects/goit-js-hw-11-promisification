@@ -12,7 +12,9 @@ import '../css/common.css';
 const delay = ms => {
   // Твой код
   return new Promise((resolve, reject) => {
-    resolve(ms);
+    setTimeout(() => {
+      resolve(ms);
+    }, ms);
   })  
 };
 
